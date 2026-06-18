@@ -11,9 +11,16 @@
 # Step 1: Build the application using Maven
 
 # Use a Maven image with Temurin JDK 26 for builds
-FROM maven:3.9.11-eclipse-temurin-26 AS build
-# Set the working directory inside the container
+FROM eclipse-temurin:26-jdk AS build
 WORKDIR /app
+
+ENV MAVEN_VERSION=3.9.11
+RUN apt-get update && apt-get install -y curl && \
+    curl -fsSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+    | tar xzf - -C /opt && \
+    ln -s /opt/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/local/bin/mvn && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 COPY pom.xml .
 RUN mvn dependency:go-offline
 # Copy the Maven project files into the container
