@@ -5,7 +5,7 @@ services:
     ports:
       - "8092:8092"
     environment:
-      DATABASE_URL: jdbc:postgresql://safestepdbuser:JNl8lKp0oALTwGpYKnlvSexSBRXLX8Zl@dpg-d8pj85v7f7vs73d1r4i0-a/safestepdb_k99s
+      DATABASE_URL: postgresql://safestepdbuser:JNl8lKp0oALTwGpYKnlvSexSBRXLX8Zl@dpg-d8pj85v7f7vs73d1r4i0-a/safestepdb_k99s
       DATABASE_PORT: 5432
       DATABASE_NAME: safestepdb_k99s
       DATABASE_USER: safestepdbuser
