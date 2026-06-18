@@ -1,18 +1,4 @@
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: safestep-db
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: safestep
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - safestep-net
-
   app:
     build: .
     container_name: safestep-app
@@ -26,14 +12,3 @@ services:
       DATABASE_USER: safestepdbuser
       DATABASE_PASSWORD: JNl8lKp0oALTwGpYKnlvSexSBRXLX8Zl
       JWT_SECRET: WriteHereYourSecretStringForTokenSigningCredentials
-    depends_on:
-      - postgres
-    networks:
-      - safestep-net
-
-volumes:
-  pgdata:
-
-networks:
-  safestep-net:
-    driver: bridge
