@@ -20,11 +20,11 @@ services:
       - "8092:8092"
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      DATABASE_URL: postgres
+      DATABASE_URL: jdbc:postgresql://safestepdbuser:JNl8lKp0oALTwGpYKnlvSexSBRXLX8Zl@dpg-d8pj85v7f7vs73d1r4i0-a/safestepdb_k99s
       DATABASE_PORT: 5432
-      DATABASE_NAME: safestep
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: safestepdb_k99s
+      DATABASE_USER: safestepdbuser
+      DATABASE_PASSWORD: JNl8lKp0oALTwGpYKnlvSexSBRXLX8Zl
       JWT_SECRET: WriteHereYourSecretStringForTokenSigningCredentials
     depends_on:
       - postgres
